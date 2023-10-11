@@ -1,26 +1,26 @@
 ### 1. install composer
-'''sh
+```sh
 composer install
-'''
+```
 
 ### 2. Ganti .env.example jadi .env
 
 ### 3. install npm
-'''sh
+```sh
 npm i
-'''
+```
 
 ### 4. migrate database
-'''sh
+```sh
 php artisan migrate
-'''
+```
 
 ### 5. run npm
-'''sh
+```sh
 npm run dev
-'''
+```
 
 ## 6. jalankan laravel
-'''sh
+```sh
 php artisan serve
-'''
+```
