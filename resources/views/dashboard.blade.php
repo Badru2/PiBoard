@@ -8,10 +8,10 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="card">
-                <div class="card body">
+                <div class="card-body bg-dark">
                     <form action="{{ route('tweets.store') }}" method="post">
                         @csrf
-                        <textarea name="content" id="" class="textarea textarea w-full bg-info" cols="30" rows="10"
+                        <textarea name="content" id="" class=" w-full bg-dark text-light" cols="30" rows="10"
                             placeholder="Tuliskan postingan"></textarea>
                         <input type="submit" value="Tweet" class="btn btn-primary">
                     </form>
@@ -19,8 +19,8 @@
             </div>
 
             @foreach ($tweets as $tweet)
-                <div class="card">
-                    <div class="card-body">
+                <div class="card mt-5">
+                    <div class="card-body bg-dark text-light">
                         <h2>{{ $tweet->user->name }}</h2>
                         <p>{{ $tweet->content }}</p>
 

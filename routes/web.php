@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
-Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('tweets', TweetStoreController::class)->name('tweets.store');
 Route::delete('tweets/{id}', TweetDeleteController::class)->name('tweets.destroy');
 
