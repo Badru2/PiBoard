@@ -15,13 +15,22 @@ class TweetStoreController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(): RedirectResponse
+    public function __invoke(Request $request): RedirectResponse
     {
+        $this->validate($request, [
+            'image'     => 'nullable|image|mimes:jpeg,jpg,png|max:5048',
+            'content'   => 'required|min:10'
+        ]);
+
+        $image = $request->file('image');
+        $image->storeAs('public/posts', $image->hashName());
+
         Tweet::create([
             'user_id' => Auth::id(),
+            'image'   => $image->hashName(),
             'content' => request('content')
         ]);
 
-        return redirect()->back();
+        return redirect("/");
     }
 }

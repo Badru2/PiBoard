@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Tweet\TweetDeleteController;
 use App\Http\Controllers\Tweet\TweetStoreController;
+use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/create', TweetController::class)->name('create');
 Route::post('tweets', TweetStoreController::class)->name('tweets.store');
 Route::delete('tweets/{id}', TweetDeleteController::class)->name('tweets.destroy');
 
@@ -31,4 +33,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
