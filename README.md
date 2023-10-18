@@ -4,6 +4,9 @@ composer install
 ```
 
 ### 2. Ganti .env.example jadi .env
+```sh
+cp .env.example .env
+```
 
 ### 3. install npm
 ```sh
