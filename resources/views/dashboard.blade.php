@@ -25,8 +25,15 @@
                         <p>{{ $tweet->content }}</p>
 
                         <td class="text-center">
-                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded" style="width: 150px">
+                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" id="myImg" class="rounded"
+                                style="width: 150px">
                         </td>
+
+                        <div id="myModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01">
+                            <div id="caption"></div>
+                        </div>
 
                         @can('delete', $tweet)
                             <form action="{{ route('tweets.destroy', $tweet->id) }}" method="post">
@@ -42,4 +49,6 @@
             @endforeach
         </div>
     </div>
+
+
 </x-app-layout>

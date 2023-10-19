@@ -17,8 +17,8 @@ class TweetStoreController extends Controller
      */
     public function __invoke(Request $request): RedirectResponse
     {
-        $this->validate($request, [
-            'image'     => 'nullable|image|mimes:jpeg,jpg,png|max:5048',
+        $request->validate([
+            'image'     => 'nullable|image|mimes:jpeg,jpg,png',
             'content'   => 'required|min:10'
         ]);
 
