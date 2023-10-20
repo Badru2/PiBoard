@@ -5,6 +5,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="card">
                 <div class="card-body bg-dark">
+                    {{-- <form action=""></form> --}}
                     <form action="{{ route('tweets.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">

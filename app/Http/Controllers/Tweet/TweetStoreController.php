@@ -19,7 +19,7 @@ class TweetStoreController extends Controller
     {
         $request->validate([
             'image'     => 'nullable|image|mimes:jpeg,jpg,png',
-            'content'   => 'required|min:10'
+            'content'   => 'required|min:1'
         ]);
 
         $image = $request->file('image');
