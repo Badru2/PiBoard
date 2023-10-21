@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Tweet\TweetDeleteController;
@@ -26,6 +27,7 @@ Route::get('/', DashboardController::class)->middleware(['auth', 'verified'])->n
 Route::get('/create', TweetController::class)->name('create');
 Route::post('tweets', TweetStoreController::class)->name('tweets.store');
 Route::delete('tweets/{id}', TweetDeleteController::class)->name('tweets.destroy');
+Route::post('store', [CommentController::class, 'store'])->name('comments.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

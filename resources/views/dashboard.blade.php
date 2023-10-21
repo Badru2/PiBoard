@@ -1,27 +1,11 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot> --}}
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{-- <div class="card">
-                <div class="card-body bg-dark">
-                    <form action="{{ route('tweets.store') }}" method="post">
-                        @csrf
-                        <textarea name="content" id="" class=" w-full bg-dark text-light" cols="30" rows="10"
-                            placeholder="Tuliskan postingan"></textarea>
-                        <input type="submit" value="Tweet" class="btn btn-primary">
-                    </form>
-                </div>
-            </div> --}}
-
             @foreach ($tweets as $tweet)
                 <div class="card mt-5">
                     <div class="card-body bg-dark text-light">
-                        <h2>{{ $tweet->user->name }}</h2>
+                        {{-- Content Tweet Start --}}
+                        <strong>{{ $tweet->user->name }}</strong>
                         <p>{{ $tweet->content }}</p>
 
                         <td class="text-center">
@@ -35,6 +19,7 @@
                             <div id="caption"></div>
                         </div>
 
+                        {{-- Delete Tweet Start --}}
                         @can('delete', $tweet)
                             <form action="{{ route('tweets.destroy', $tweet->id) }}" method="post">
                                 @csrf
@@ -42,8 +27,29 @@
                                 <button type="submit" class="btn btn-danger">Hapus</button>
                             </form>
                         @endcan
+                        {{-- Delete Tweet End --}}
 
                         <p>{{ $tweet->created_at->diffForHumans() }}</p>
+                        {{-- Content Tweet End --}}
+
+                        {{-- Comments Start --}}
+                        <h4>Display Comments</h4>
+                        @include('tweets.comments', [
+                            'comments' => $tweet->comments,
+                            'tweet_id' => $tweet->id,
+                        ])
+
+                        <form method="post" action="{{ route('comments.store') }}">
+                            @csrf
+                            <div class="form-group">
+                                <textarea class="form-control" name="content"></textarea>
+                                <input type="hidden" name="tweet_id" value="{{ $tweet->id }}" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Add Comment" />
+                            </div>
+                        </form>
+                        {{-- Comments End --}}
                     </div>
                 </div>
             @endforeach

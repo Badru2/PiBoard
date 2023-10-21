@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tweets', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('image')->nullable();
-            $table->string('content');
+            $table->integer('user_id')->unsigned();
+            $table->integer('tweet_id')->unsigned();
+            $table->integer('parent_id')->unsigned()->nullable();
+            $table->text('content');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tweets');
+        Schema::dropIfExists('comments');
     }
 };
