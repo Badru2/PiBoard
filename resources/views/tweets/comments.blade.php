@@ -6,7 +6,7 @@
         <form method="POST" action="{{ route('comments.store') }}">
             @csrf
             <div class="form-group">
-                <input type="text" name="content" class="form-control" />
+                <textarea class="form-control" name="content" rows="1"></textarea>
                 <input type="hidden" name="tweet_id" value="{{ $tweet->id }}" />
                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
             </div>

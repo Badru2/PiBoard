@@ -33,7 +33,7 @@
                         {{-- Content Tweet End --}}
 
                         {{-- Comments Start --}}
-                        <h4>Display Comments</h4>
+                        {{-- <h4>Display Comments</h4> --}}
                         @include('tweets.comments', [
                             'comments' => $tweet->comments,
                             'tweet_id' => $tweet->id,
@@ -42,7 +42,7 @@
                         <form method="post" action="{{ route('comments.store') }}">
                             @csrf
                             <div class="form-group">
-                                <textarea class="form-control" name="content"></textarea>
+                                <textarea class="form-control" name="content" rows="1"></textarea>
                                 <input type="hidden" name="tweet_id" value="{{ $tweet->id }}" />
                             </div>
                             <div class="form-group">

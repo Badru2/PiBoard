@@ -10,7 +10,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold">GAMBAR</label>
                             <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                name="image">
+                                name="image" id="selectImage" multiple>
 
                             <!-- error message untuk title -->
                             @error('image')
@@ -18,6 +18,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
+                            <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;" />
                         </div>
                         <textarea name="content" id="" class="textarea w-full bg-dark text-light" cols="30" rows="10"
                             placeholder="Tuliskan postingan"></textarea>
@@ -33,5 +34,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    <script>
+        selectImage.onchange = evt => {
+            preview = document.getElementById('preview');
+            preview.style.display = 'block';
+            const [file] = selectImage.files
+            if (file) {
+                preview.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 </x-app-layout>
