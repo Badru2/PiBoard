@@ -1,5 +1,12 @@
 <x-app-layout>
     <div class="py-12">
+        <div class="card max-w-2xl mx-auto sm:px-6 lg:px-8 bg-dark d-flex">
+            <form class="mx-auto row w-full justify-content-around" action="{{ route('search') }}" method="GET">
+                <input type="text" class="form-control col-9 h-12 bg-dark border-gray-400 text-white " name="search"
+                    placeholder="Search" value="{{ old('search') }}">
+                <input type="submit" class="btn btn-primary col-2 h-12" value="SEARCH">
+            </form>
+        </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($tweets as $tweet)
                 <div class="card mt-5">
