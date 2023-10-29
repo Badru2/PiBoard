@@ -21,7 +21,7 @@ class TweetPolicy
      */
     public function view(User $user, Tweet $tweet): bool
     {
-        //
+        return $user->id == $tweet->user_id;
     }
 
     /**

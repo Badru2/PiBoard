@@ -9,22 +9,16 @@
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($tweets as $tweet)
-                <div class="card mt-5">
+                <div class="card mt-5 border-dark">
                     <div class="card-body bg-dark text-light">
                         {{-- Content Tweet Start --}}
                         <strong>{{ $tweet->user->name }}</strong>
                         <p>{{ $tweet->content }}</p>
 
                         <td class="text-center">
-                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" id="myImg" class="rounded"
+                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded"
                                 style="width: 150px">
                         </td>
-
-                        <div id="myModal" class="modal">
-                            <span class="close">&times;</span>
-                            <img class="modal-content" id="img01">
-                            <div id="caption"></div>
-                        </div>
 
                         {{-- Delete Tweet Start --}}
                         <div class="position-absolute right-4">
@@ -42,7 +36,6 @@
                         {{-- Content Tweet End --}}
 
                         {{-- Comments Start --}}
-                        {{-- <h4>Display Comments</h4> --}}
                         @include('tweets.comments', [
                             'comments' => $tweet->comments,
                             'tweet_id' => $tweet->id,
