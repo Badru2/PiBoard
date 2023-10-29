@@ -12,7 +12,7 @@ class SearchController extends Controller
     {
         $search = $request->get("search");
 
-        $searchTweet = Tweet::where('content', 'like', "%" . $search . "%")->paginate();
+        $searchTweet = Tweet::where('content', 'like', "%" . $search . "%")->orderBy('id', 'desc')->paginate();
 
         return view('dashboard', ['tweets' => $searchTweet]);
     }
