@@ -27,16 +27,18 @@
                         </div>
 
                         {{-- Delete Tweet Start --}}
-                        @can('delete', $tweet)
-                            <form action="{{ route('tweets.destroy', $tweet->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Hapus</button>
-                            </form>
-                        @endcan
+                        <div class="position-absolute right-4">
+                            @can('delete', $tweet)
+                                <form action="{{ route('tweets.destroy', $tweet->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            @endcan
+                        </div>
                         {{-- Delete Tweet End --}}
 
-                        <p>{{ $tweet->created_at->diffForHumans() }}</p>
+                        <p>{{ $tweet->created_at->locale('id')->diffForHumans() }}</p>
                         {{-- Content Tweet End --}}
 
                         {{-- Comments Start --}}
@@ -46,13 +48,13 @@
                             'tweet_id' => $tweet->id,
                         ])
 
-                        <form method="post" action="{{ route('comments.store') }}">
+                        <form method="post" action="{{ route('comments.store') }}" class="row">
                             @csrf
-                            <div class="form-group">
+                            <div class="col-10">
                                 <textarea class="form-control" name="content" rows="1"></textarea>
                                 <input type="hidden" name="tweet_id" value="{{ $tweet->id }}" />
                             </div>
-                            <div class="form-group">
+                            <div class=" col-2">
                                 <input type="submit" class="btn btn-success" value="Add Comment" />
                             </div>
                         </form>
