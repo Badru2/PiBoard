@@ -18,12 +18,22 @@ npm i
 php artisan migrate
 ```
 
-### 5. run npm
+### 5. menyambungkan image
+```sh
+php artisan storage:link
+```
+
+### 6. generate key
+```sh
+php artisan key:generate
+```
+
+### 7. run npm
 ```sh
 npm run dev
 ```
 
-## 6. jalankan laravel
+## 8. jalankan laravel
 ```sh
 php artisan serve
 ```
