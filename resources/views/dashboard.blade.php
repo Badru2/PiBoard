@@ -16,7 +16,7 @@
                         <p>{{ $tweet->content }}</p>
 
                         <td class="text-center">
-                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded"
+                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded" alt=""
                                 style="width: 150px">
                         </td>
 
@@ -29,6 +29,10 @@
                                     <button type="submit" class="btn btn-danger">Hapus</button>
                                 </form>
                             @endcan
+                        </div>
+
+                        <div class="">
+                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="btn btn-primary">SHOW</a>
                         </div>
                         {{-- Delete Tweet End --}}
 
@@ -57,6 +61,5 @@
             @endforeach
         </div>
     </div>
-
 
 </x-app-layout>
