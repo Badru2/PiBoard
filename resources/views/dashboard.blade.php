@@ -31,21 +31,22 @@
                             @endcan
                         </div>
 
-                        <div class="">
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="btn btn-primary">SHOW</a>
-                        </div>
                         {{-- Delete Tweet End --}}
 
                         <p>{{ $tweet->created_at->locale('id')->diffForHumans() }}</p>
+                        <div class="">
+                            <a href="{{ route('tweets.detail', $tweet->id) }}" class=""><iconify-icon
+                                    icon="bx:comment"></iconify-icon></a>
+                        </div>
                         {{-- Content Tweet End --}}
 
                         {{-- Comments Start --}}
-                        @include('tweets.comments', [
+                        {{-- @include('tweets.comments', [
                             'comments' => $tweet->comments,
                             'tweet_id' => $tweet->id,
-                        ])
+                        ]) --}}
 
-                        <form method="post" action="{{ route('comments.store') }}" class="row">
+                        {{-- <form method="post" action="{{ route('comments.store') }}" class="row">
                             @csrf
                             <div class="col-10">
                                 <textarea class="form-control" name="content" rows="1"></textarea>
@@ -54,7 +55,7 @@
                             <div class=" col-2">
                                 <input type="submit" class="btn btn-success" value="Add Comment" />
                             </div>
-                        </form>
+                        </form>  --}}
                         {{-- Comments End --}}
                     </div>
                 </div>
