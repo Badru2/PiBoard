@@ -23,11 +23,12 @@
                         {{-- Delete Tweet Start --}}
                         <div class="position-absolute right-4">
                             @can('delete', $tweet)
-                                <form action="{{ route('tweets.destroy', $tweet->id) }}" method="post">
+                                {{-- <form action="{{ route('tweets.destroy', $tweet->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
-                                </form>
+                                </form> --}}
+                                <a href="{{ route('tweets.destroy', $tweet->id) }}" type="submit" class="btn btn-danger"
+                                    data-confirm-delete="true">Hapus</a>
                             @endcan
                         </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Tweet;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tweet;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -30,6 +31,8 @@ class TweetStoreController extends Controller
             'image'   => $image->hashName(),
             'content' => request('content')
         ]);
+
+        toast('Tweet created successfully', 'success');
 
         return redirect("/");
     }
