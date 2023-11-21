@@ -37,18 +37,34 @@
                         <div class="">
                             <a href="{{ route('tweets.detail', $tweet->id) }}" class=""><iconify-icon
                                     icon="bx:comment"></iconify-icon></a>
+
+                            <a class="m-3" onclick="like({{ $tweet->id }}, this)">
+                                {{-- {{ $tweet->is_liked() ? 'unlike' : 'like' }} --}}
+                                @if ($tweet->is_liked())
+                                    <iconify-icon icon="material-symbols-light:favorite"></iconify-icon>
+                                @else
+                                    <iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>
+                                @endif
+                            </a>
                         </div>
 
-                        <button class="btn btn-primary" onclick="like({{ $tweet->id }}, this)">
-                            {{ ($tweet->is_liked() ? 'unlike' : 'like') }}
-                        </button>
-                        <span>{{$tweet->likes_count}}</span>
 
                         <script>
+                            // function like(id, el) {
+                            //     fetch('/like/' + id).then(response => response.json()).then(data => {
+                            //         el.innerText = (data.status == 'LIKE') ? 'unlike' : 'like'
+                            //     });
+                            // }
                             function like(id, el) {
-                                fetch('/like/' + id).then(response => response.json()).then(data => {
-                                    el.innerText = (data.status == 'LIKE') ? 'unlike' : 'like'
-                                });
+                                fetch('/like/' + id)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.status == 'LIKE') {
+                                            el.innerHTML = '<iconify-icon icon="material-symbols-light:favorite"></iconify-icon>';
+                                        } else {
+                                            el.innerHTML = '<iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>';
+                                        }
+                                    });
                             }
                         </script>
                         {{-- Content Tweet End --}}
