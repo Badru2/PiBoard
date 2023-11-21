@@ -2,8 +2,8 @@
     <div class="py-12">
         <div class="card max-w-2xl mx-auto sm:px-6 lg:px-8 bg-dark d-flex">
             <form class="mx-auto row w-full justify-content-around" action="{{ route('search') }}" method="GET">
-                <input type="text" class="form-control col-9 h-12 bg-dark border-gray-400 text-white " name="search"
-                    placeholder="Search" value="{{ old('search') }}">
+                <input type="text" class="form-control col-9 h-12 bg-dark border-gray-400 text-white " name="search" placeholder="Search"
+                    value="{{ old('search') }}">
                 <input type="submit" class="btn btn-primary col-2 h-12" value="SEARCH">
             </form>
         </div>
@@ -16,8 +16,7 @@
                         <p>{{ $tweet->content }}</p>
 
                         <td class="text-center">
-                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded" alt=""
-                                style="width: 150px">
+                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded" alt="" style="width: 150px">
                         </td>
 
                         {{-- Delete Tweet Start --}}
@@ -38,6 +37,19 @@
                             <a href="{{ route('tweets.detail', $tweet->id) }}" class=""><iconify-icon
                                     icon="bx:comment"></iconify-icon></a>
                         </div>
+
+                        <button class="btn btn-primary" onclick="like({{ $tweet->id }}, this)">
+                            {{ ($tweet->is_liked() ? 'unlike' : 'like') }}
+                        </button>
+                        <span>{{$tweet->likes_count}}</span>
+
+                        <script>
+                            function like(id, el) {
+                                fetch('/like/' + id).then(response => response.json()).then(data => {
+                                    el.innerText = (data.status == 'LIKE') ? 'unlike' : 'like'
+                                });
+                            }
+                        </script>
                         {{-- Content Tweet End --}}
 
                         {{-- Comments Start --}}
