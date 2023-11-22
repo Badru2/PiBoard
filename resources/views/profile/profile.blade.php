@@ -43,14 +43,9 @@
                                     <iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>
                                 @endif
                             </a>
-                            {{-- <div id="tweet-likecount-{{ $tweet->id }}">
-                                {{ $tweet->likes()->count() }}
-                            </div> --}}
 
                             <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl"><iconify-icon
-                                    icon="bx:comment"></iconify-icon>
-                                {{ $tweet->comments->count() }}
-                            </a>
+                                    icon="bx:comment"></iconify-icon></a>
 
                             <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl"><iconify-icon
                                     icon="ri:share-line"></iconify-icon></a>

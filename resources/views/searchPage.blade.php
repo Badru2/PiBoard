@@ -1,5 +1,9 @@
 <x-app-layout>
     <div class="py-4">
+        <div class="card w-1/2 grid grid-cols-5 mx-auto bg-dark my-3 mb-4">
+            <a href="/" class="text-white text-4xl p-2 col-span-2"><iconify-icon icon="ep:back"></iconify-icon></a>
+            <h1 class="text-white my-auto col-span-3">Hasil Pencarian: <span class="text-cyan-300">"{{ $search }}"</span></h1>
+        </div>
         <div class="w-1/2 mx-auto sm:px-6 lg:px-8">
             @foreach ($tweets as $tweet)
                 <div class="card mb-5 border-dark">
@@ -43,14 +47,9 @@
                                     <iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>
                                 @endif
                             </a>
-                            {{-- <div id="tweet-likecount-{{ $tweet->id }}">
-                                {{ $tweet->likes()->count() }}
-                            </div> --}}
 
                             <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl"><iconify-icon
-                                    icon="bx:comment"></iconify-icon>
-                                {{ $tweet->comments->count() }}
-                            </a>
+                                    icon="bx:comment"></iconify-icon></a>
 
                             <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl"><iconify-icon
                                     icon="ri:share-line"></iconify-icon></a>

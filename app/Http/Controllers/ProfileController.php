@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Tweet;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +18,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-            'tweets' => Tweet::latest('id')->get(),
+        $user = $request->user();
+        $tweets = $user->tweets()->latest('id')->get();
+
+        return view('profile.profile', [
+            'user' => $user,
+            'tweets' => $tweets,
         ]);
     }
 

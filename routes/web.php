@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('tweets/{id}', TweetDeleteController::class)->name('tweets.destroy');
     Route::post('store', [CommentController::class, 'store'])->name('comments.store');
     Route::get('tweets/detail/{id}', TweetShowController::class)->name('tweets.detail');
-    Route::get('tweets/search', SearchController::class)->name('search');
+    Route::get('search', SearchController::class)->name('search');
     Route::get('/like/{id}', [LikeController::class, 'toggle']);
 });
 

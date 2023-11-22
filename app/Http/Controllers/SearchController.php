@@ -19,6 +19,6 @@ class SearchController extends Controller
 
         $searchTweet = Tweet::where('content', 'like', "%" . $search . "%")->orderBy('id', 'desc')->paginate();
 
-        return view('dashboard', ['tweets' => $searchTweet]);
+        return view('searchPage', ['tweets' => $searchTweet], compact('search'));
     }
 }

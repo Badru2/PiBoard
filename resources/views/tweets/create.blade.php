@@ -1,16 +1,17 @@
 <x-app-layout>
 
-    <div class="py-12">
-
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="card">
+    <div class="py-8">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+            <div class="card border-dark">
                 <div class="card-body bg-dark">
+                    <h2 class="text-white text-xl">Post</h2>
+                    <div class="w-full bg-gray-600 my-2" style="height: 1px"></div>
                     <form action="{{ route('tweets.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="font-weight-bold">GAMBAR</label>
-                            <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                name="image" id="selectImage" multiple>
+                            <label class="text-white">GAMBAR</label>
+                            <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="selectImage"
+                                multiple>
 
                             <!-- error message untuk title -->
                             @error('image')
@@ -20,9 +21,14 @@
                             @enderror
                             <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;" />
                         </div>
-                        <textarea name="content" id="" class="textarea w-full bg-dark text-light" cols="30" rows="10"
-                            placeholder="Tuliskan postingan"></textarea>
-                        <input type="submit" value="Tweet" class="btn btn-primary">
+
+                        <h2 class="text-white mt-5 mb-3 text-xl">Content</h2>
+
+                        <textarea name="content" id="" class="textarea w-full bg-dark border-black text-light" cols="30" rows="10"
+                            placeholder="Tuliskan postingan..."></textarea>
+
+                        <input type="submit" value="Publish" class="btn rounded-full font-bold text-white px-11 my-5"
+                            style="background-color: #4AB6FF">
                     </form>
                 </div>
             </div>

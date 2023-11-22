@@ -7,11 +7,21 @@
                     <img class="w-2/3 mx-auto" src="{{ asset('icon_white.svg') }}" alt="">
                 </a>
             </li>
-            <li>
+            <li class="my-5">
                 <a href="/"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <div
-                        class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+                    class="flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <div class="text-4xl">
+                        <iconify-icon icon="ion:person-circle-outline"></iconify-icon>
+                    </div>
+                    <div class="ms-3">
+                        {{ Auth::user()->name }}
+                    </div>
+                </a>
+            </li>
+            <li class="my-2">
+                <a href="/"
+                    class="flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <div class="text-4xl">
                         <iconify-icon icon="uil:home"></iconify-icon>
                     </div>
                     <span class="ms-3">Dashboard</span>
@@ -19,19 +29,17 @@
             </li>
             <li>
                 <a href="/create"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <div
-                        class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+                    class="flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <div class="text-4xl">
                         <iconify-icon icon="material-symbols:upload"></iconify-icon>
                     </div>
                     <span class="ms-3">Create</span>
                 </a>
             </li>
-            <div>
+            <div class="">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-dropdown-link :href="route('logout')"
+                    <x-dropdown-link :href="route('logout')" class="bg-transparent"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}

@@ -142,16 +142,16 @@
 
 
         <!-- Page Heading -->
-        @if (isset($header))
+        {{-- @if (isset($header))
             <header class="bg-dark sm:ml-64 dark:bg-gray-800 shadow">
                 <div class="mx-auto py-6 px-4 sm:px-1 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
-        @endif
+        @endif --}}
 
         <!-- Page Content -->
-        <main class="w-1/2 mx-auto">
+        <main class="mx-auto">
             @include('sweetalert::alert')
             {{ $slot }}
         </main>
@@ -174,6 +174,33 @@
                     }
                 });
         }
+
+        // function like(id, type = "POST") {
+        //     let likesCount = 0
+        //     let el = ''
+
+        //     if (type == 'POST') {
+        //         el = document.getElementById('likes-count-' + id);
+        //     } else {
+        //         el = document.getElementById('comment-count-' + id);
+        //     }
+
+        //     fetch('/like/' + type + '/' + id)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         let currentCount = 0;
+
+        //         if (data.status == "LIKE") {
+
+        //         }
+        //     })
+        // }
+
+        document.querySelectorAll(".captions").forEach(function(el) {
+            let renderedText = el.innerHTML.replace(/#(\w+)/g,
+                "<a href='search?search=%23$1' style='color: #00A9FF; text-decoration: underline'>#$1</a>");
+            el.innerHTML = renderedText;
+        });
     </script>
 
     {{-- <script>
