@@ -132,25 +132,49 @@
     </style>
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @include('layouts.navigation')
+<body class="font-sans antialiased bg-dark bg-black">
+    <div class="min-h-screen dark:bg-gray-900 ">
+        {{-- @include('layouts.navigation') --}}
+
+        @include('components.sidebar-left')
+
+        @include('components.sidebar-right')
+
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-dark dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <header class="bg-dark sm:ml-64 dark:bg-gray-800 shadow">
+                <div class="mx-auto py-6 px-4 sm:px-1 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="w-1/2 mx-auto">
             @include('sweetalert::alert')
             {{ $slot }}
         </main>
     </div>
+
+    <script>
+        // function like(id, el) {
+        //     fetch('/like/' + id).then(response => response.json()).then(data => {
+        //         el.innerText = (data.status == 'LIKE') ? 'unlike' : 'like'
+        //     });
+        // }
+        function like(id, el) {
+            fetch('/like/' + id)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status == 'LIKE') {
+                        el.innerHTML = '<iconify-icon icon="material-symbols-light:favorite"></iconify-icon>';
+                    } else {
+                        el.innerHTML = '<iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>';
+                    }
+                });
+        }
+    </script>
 
     {{-- <script>
             // Get the modal
@@ -160,7 +184,7 @@
             var img = document.getElementById("myImg");
             var modalImg = document.getElementById("img01");
             var captionText = document.getElementById("caption");
-            img.onclick = function() {
+        img.onclick = function() {
                 modal.style.display = "block";
                 modalImg.src = this.src;
                 captionText.innerHTML = this.alt;

@@ -1,22 +1,23 @@
 <x-app-layout>
-    <div class="py-12">
-        <div class="card max-w-2xl mx-auto sm:px-6 lg:px-8 bg-dark d-flex">
-            <form class="mx-auto row w-full justify-content-around" action="{{ route('search') }}" method="GET">
-                <input type="text" class="form-control col-9 h-12 bg-dark border-gray-400 text-white " name="search" placeholder="Search"
-                    value="{{ old('search') }}">
-                <input type="submit" class="btn btn-primary col-2 h-12" value="SEARCH">
-            </form>
-        </div>
+    <div class="py-4 ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($tweets as $tweet)
                 <div class="card mt-5 border-dark">
                     <div class="card-body bg-dark text-light">
                         {{-- Content Tweet Start --}}
-                        <strong>{{ $tweet->user->name }}</strong>
+                        <div class="flex flex-row">
+                            <div class="text-5xl me-2">
+                                <iconify-icon icon="ion:person-circle-outline"></iconify-icon>
+                            </div>
+                            <div>
+                                <strong>{{ $tweet->user->name }}</strong>
+                                <p>{{ $tweet->created_at->locale('id')->diffForHumans() }}</p>
+                            </div>
+                        </div>
                         <p>{{ $tweet->content }}</p>
 
                         <td class="text-center">
-                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded" alt="" style="width: 150px">
+                            <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5" alt="">
                         </td>
 
                         {{-- Delete Tweet Start --}}
@@ -33,12 +34,11 @@
 
                         {{-- Delete Tweet End --}}
 
-                        <p>{{ $tweet->created_at->locale('id')->diffForHumans() }}</p>
-                        <div class="">
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class=""><iconify-icon
+                        <div class="border-black border-t-2 border-b-2 py-2 px-2 mt-2">
+                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="text-xl"><iconify-icon
                                     icon="bx:comment"></iconify-icon></a>
 
-                            <a class="m-3" onclick="like({{ $tweet->id }}, this)">
+                            <a class="m-3 text-xl" onclick="like({{ $tweet->id }}, this)">
                                 {{-- {{ $tweet->is_liked() ? 'unlike' : 'like' }} --}}
                                 @if ($tweet->is_liked())
                                     <iconify-icon icon="material-symbols-light:favorite"></iconify-icon>
@@ -49,24 +49,7 @@
                         </div>
 
 
-                        <script>
-                            // function like(id, el) {
-                            //     fetch('/like/' + id).then(response => response.json()).then(data => {
-                            //         el.innerText = (data.status == 'LIKE') ? 'unlike' : 'like'
-                            //     });
-                            // }
-                            function like(id, el) {
-                                fetch('/like/' + id)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.status == 'LIKE') {
-                                            el.innerHTML = '<iconify-icon icon="material-symbols-light:favorite"></iconify-icon>';
-                                        } else {
-                                            el.innerHTML = '<iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>';
-                                        }
-                                    });
-                            }
-                        </script>
+
                         {{-- Content Tweet End --}}
 
                         {{-- Comments Start --}}

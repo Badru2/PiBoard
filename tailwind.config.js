@@ -19,5 +19,5 @@ export default {
 
     darkMode: "class",
 
-    plugins: [forms, require("daisyui")],
+    plugins: [forms, require("daisyui"), "flowbite/plugin"],
 };

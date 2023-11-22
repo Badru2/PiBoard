@@ -24,11 +24,17 @@ class TweetStoreController extends Controller
         ]);
 
         $image = $request->file('image');
-        $image->storeAs('public/posts', $image->hashName());
+
+        if ($image) {
+            $image->storeAs('public/posts', $image->hashName());
+            $imagePath = $image->hashName();
+        } else {
+            $imagePath = null;
+        }
 
         Tweet::create([
             'user_id' => Auth::id(),
-            'image'   => $image->hashName(),
+            'image'   => $imagePath,
             'content' => request('content')
         ]);
 

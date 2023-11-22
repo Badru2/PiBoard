@@ -22,17 +22,19 @@
 
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-centerpt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900" style="background-color: #021F35">
-        <div class="w-2/5">
-            <div class="container">
-                <img src="{{ asset('Icon.svg') }}" alt="" srcset="">
-                <div style="width: 200px; height: 10px; background-color: #C70039; border-radius: 10px"></div>
+        <div class="w-2/5 grid min-h-screen content-center">
+            <div class="container ms-4">
+                <img style="color: " src="{{ asset('icon_white.svg') }}" alt="" srcset="">
+                <div class="my-3" style="width: 200px; height: 10px; background-color: #C70039; border-radius: 10px"></div>
                 <h2 class="text-white text-3xl font-bold">Selamat Datang Di <h2 class="text-white text-3xl font-bold">PI Board</h2>
                 </h2>
             </div>
         </div>
-        <div class="w-3/5 justify-end absolute right-0 h-full"
-            style="background-color: #4AB6FF; height: 100vh; border-left: 6px solid #C70039">
-            <div class="mx-auto sm:max-w-md px-6 py-4 bg-white dark:bg-gray-800 shadow-md sm:rounded-lg mt-40"
+        <div class="w-3/5 grid content-center absolute right-0 h-full"
+            style="background-color: #4AB6FF; height: 100vh; border-left: 6px solid #C70039; justify-content:center">
+            <div class=" sm:max-w-md px-12 py-5
+             place-content-center container bg-white dark:bg-gray-800
+             shadow-md sm:rounded-lg"
                 style="border: 3px solid #C70039">
                 {{ $slot }}
             </div>
