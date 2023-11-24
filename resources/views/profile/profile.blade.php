@@ -2,6 +2,7 @@
     <div class="py-4">
         <div class="w-1/2 mx-auto sm:px-6 lg:px-8">
             <div class="card mb-3 bg-dark p-3 text-white">
+                <center><h2>Halo {{Auth::user()->name}} !</h2></center>
                 <div class="mx-auto my-3">
                     
                     <div class="mx-auto">
@@ -11,7 +12,21 @@
                         <h1>USERNAME: <b>{{ Auth::user()->name }}</b></h1>
                         <h2>FULLNAME: <b>{{ Auth::user()->fullName }}</b></h2>
                         <p>BIO: <b>{{ Auth::user()->bio }}</b></p>
-                        <a href="{{ route('profile.edit')}}" class="btn btn-success">Edit Profil</a>
+                        <div class="row">
+                            <div class="col-sm-6">
+                        <a href="{{ route('profile.edit')}}" class="text-white"> <i class="bi bi-pencil-square"></i> Edit Profil</a>
+                            </div>
+                            <div class="col">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a link href="route('logout')" class="bg-transparent"
+                                    onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                   <p class="text-danger"> <i class="bi bi-box-arrow-left"></i> Logout </p>
+                                <a>
+                            </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,8 +82,8 @@
                                             </form>
                                         @endcan
                                     </li>
-                                    <li><a>Edit</a></li>
-                                    <li><a>Report</a></li>
+                                    <li><a class="text-dark">Edit</a></li>
+                                    <li><a class="text-dark">Report</a></li>
                                 </ul>
                             </div>
                         </div>

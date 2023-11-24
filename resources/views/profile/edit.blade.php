@@ -9,7 +9,7 @@
                 <x-input label="Full Name" name="fullName" :object="$user" />
                 <x-input label="Biodata" name="bio" :object="$user" />
                 <div class="grid-cols-4">
-                    <label for="avatar" class="label col-span-1">Avatar: </label>
+                    <label for="avatar" class="label col-span-1" style="color: white;">Avatar: </label>
                     <input type="file" class="col-span-3" name="avatar">
                 </div>
 

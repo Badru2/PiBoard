@@ -36,16 +36,7 @@
                     <span class="ms-3">Create</span>
                 </a>
             </li>
-            <div class="">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-dropdown-link :href="route('logout')" class="bg-transparent"
-                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-dropdown-link>
-                </form>
-            </div>
+            
         </ul>
     </div>
 </aside>
