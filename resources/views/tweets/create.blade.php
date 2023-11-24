@@ -19,7 +19,13 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <img id="preview" src="#" alt="your image" class="mt-3" style="display:none;" />
+
+                            <div class="mt-2">
+                                <video id="videoPreview" src="#" alt="your video" style="display: none" controls></video>
+                                <img id="imagePreview" src="#" alt="your image" class="mt-3" style="display:none;" />
+                                <audio id="audioPreview" src="#" class="mt-3" style="display: none" controls></audio>
+                            </div>
+
                         </div>
 
                         <h2 class="text-white mt-5 mb-3 text-xl">Content</h2>
@@ -27,8 +33,16 @@
                         <textarea name="content" id="" class="textarea w-full bg-dark border-black text-light" cols="30" rows="10"
                             placeholder="Tuliskan postingan..."></textarea>
 
-                        <input type="submit" value="Publish" class="btn rounded-full font-bold text-white px-11 my-5"
-                            style="background-color: #4AB6FF">
+                        <div>
+                            {{-- <button href="/" value="Publish" class="btn rounded-full font-bold text-white px-11 my-5"
+                                style="background-color: #C70039">
+                                Hapus
+                            </button> --}}
+
+                            <input type="submit" value="Publish" class="btn rounded-full font-bold text-white px-11 my-5"
+                                style="background-color: #4AB6FF">
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -40,7 +54,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script>
+    {{-- <script>
         selectImage.onchange = evt => {
             preview = document.getElementById('preview');
             preview.style.display = 'block';
@@ -49,5 +63,35 @@
                 preview.src = URL.createObjectURL(file)
             }
         }
+    </script> --}}
+
+    <script>
+        document.getElementById('selectImage').onchange = function(evt) {
+            const videoPreview = document.getElementById('videoPreview');
+            const imagePreview = document.getElementById('imagePreview');
+
+            videoPreview.style.display = 'none';
+            imagePreview.style.display = 'none';
+
+            const [file] = evt.target.files;
+
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+
+                if (file.type.startsWith('video/')) {
+                    // Show video preview
+                    videoPreview.src = fileURL;
+                    videoPreview.style.display = 'block';
+                } else if (file.type.startsWith('image/')) {
+                    // Show image preview
+                    imagePreview.src = fileURL;
+                    imagePreview.style.display = 'block';
+                } else {
+                    // Handle other file types as needed
+                    console.error('Unsupported file type');
+                }
+            }
+        };
     </script>
+
 </x-app-layout>

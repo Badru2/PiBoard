@@ -19,6 +19,7 @@ class DashboardController extends Controller
         $text = 'Are you sure you want to delete';
         confirmDelete($title, $text);
 
+
         return view('dashboard', [
             'tweets' => Tweet::latest('id')->get(),
             'comments' => Comment::latest('id')->get(),

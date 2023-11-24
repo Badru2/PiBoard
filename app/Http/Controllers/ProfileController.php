@@ -16,7 +16,8 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+
+    public function index(Request $request): View
     {
         $user = $request->user();
         $tweets = $user->tweets()->latest('id')->get();
@@ -27,20 +28,43 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function edit(Request $request): View
+    {
+
+        $user = Auth::user();
+
+        return view('profile.edit', compact('user'));
+    }
+
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request)
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $request->validate([
+            'name' => 'required|alpha_dash|unique:users,name,' . $user->id,
+            'fullName' => 'max:30',
+            'bio' => 'max:200',
+            'avatar' => 'image|mimes:jpeg,jpg,png',
+        ]);
+
+        $imageName = $user->avatar;
+        if ($request->avatar) {
+            $avatar_img = $request->avatar;
+            $imageName = $user->name . '-' . time() . '.' . $avatar_img->extension();
+            $avatar_img->move(public_path('images/avatar'), $imageName);
         }
 
-        $request->user()->save();
+        $user->update([
+            'name' => $request->name,
+            'fullName' => $request->fullName,
+            'bio' => $request->bio,
+            'avatar' => $imageName,
+        ]);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect('/profile');
     }
 
     /**

@@ -129,10 +129,15 @@
                 width: 100%;
             }
         }
+
+        img {
+            pointer-events: none;
+            user-select: none;
+        }
     </style>
 </head>
 
-<body class="font-sans antialiased bg-dark bg-black">
+<body class="font-sans antialiased  bg-black">
     <div class="min-h-screen dark:bg-gray-900 ">
         {{-- @include('layouts.navigation') --}}
 
@@ -201,6 +206,11 @@
                 "<a href='search?search=%23$1' style='color: #00A9FF; text-decoration: underline'>#$1</a>");
             el.innerHTML = renderedText;
         });
+
+        // const img = document.querySelector('img');
+        // img.ondragstart = () => {
+        //     return false;
+        // };
     </script>
 
     {{-- <script>
