@@ -3,6 +3,7 @@
         <div class="w-1/2 mx-auto sm:px-6 lg:px-8">
             <div class="card mb-3 bg-dark p-3 text-white">
                 <div class="mx-auto my-3">
+                    
                     <div class="mx-auto">
                         <x-avatar :user="$user"></x-avatar>
                     </div>
@@ -10,6 +11,7 @@
                         <h1>USERNAME: <b>{{ Auth::user()->name }}</b></h1>
                         <h2>FULLNAME: <b>{{ Auth::user()->fullName }}</b></h2>
                         <p>BIO: <b>{{ Auth::user()->bio }}</b></p>
+                        <a href="{{ route('profile.edit')}}" class="btn btn-success">Edit Profil</a>
                     </div>
                 </div>
             </div>
@@ -81,6 +83,7 @@
                                 @else
                                     <iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>
                                 @endif
+                                {{ $tweet->likes->count() }}
                             </a>
                             {{-- <div id="tweet-likecount-{{ $tweet->id }}">
                             {{ $tweet->likes()->count() }}

@@ -54,8 +54,8 @@
                                             </form>
                                         @endcan
                                     </li>
-                                    <li><a>Edit</a></li>
-                                    <li><a>Report</a></li>
+                                    <li><a class="text-dark">Edit</a></li>
+                                    <li><a class="text-dark">Report</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -68,6 +68,7 @@
                                 @else
                                     <iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>
                                 @endif
+                                {{ $tweet->likes->count() }}
                             </a>
                             {{-- <div id="tweet-likecount-{{ $tweet->id }}">
                                 {{ $tweet->likes()->count() }}
