@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('image')->nullable()->default(0);
-            $table->string('content');
+            $table->string('content')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

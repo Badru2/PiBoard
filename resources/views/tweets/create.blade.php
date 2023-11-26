@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="py-8">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="card border-dark">
@@ -9,9 +8,10 @@
                     <form action="{{ route('tweets.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="text-white">GAMBAR</label>
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="selectImage"
-                                multiple>
+                            <label class="text-white">GAMBAR/VIDEO</label>
+                            <input type="file"
+                                class="file-input file-input-bordered text-white w-full mt-2 @error('image') is-invalid @enderror"
+                                name="image" id="selectImage" multiple>
 
                             <!-- error message untuk title -->
                             @error('image')
@@ -21,28 +21,26 @@
                             @enderror
 
                             <div class="mt-2">
-                                <video id="videoPreview" src="#" alt="your video" style="display: none" controls></video>
-                                <img id="imagePreview" src="#" alt="your image" class="mt-3" style="display:none;" />
-                                <audio id="audioPreview" src="#" class="mt-3" style="display: none" controls></audio>
+                                <video id="videoPreview" src="#" alt="your video" style="display: none"
+                                    controls></video>
+                                <img id="imagePreview" src="#" alt="your image" class="mt-3"
+                                    style="display:none;" />
+                                <audio id="audioPreview" src="#" class="mt-3" style="display: none"
+                                    controls></audio>
                             </div>
 
                         </div>
 
                         <h2 class="text-white mt-5 mb-3 text-xl">Content</h2>
 
-                        <textarea name="content" id="" class="textarea w-full bg-dark border-black text-light" cols="30" rows="10"
-                            placeholder="Tuliskan postingan..."></textarea>
+                        <textarea name="content" id="" class="textarea w-full bg-dark border-black text-light" cols="30"
+                            rows="10" placeholder="Tuliskan postingan..."></textarea>
 
                         <div>
-                            {{-- <button href="/" value="Publish" class="btn rounded-full font-bold text-white px-11 my-5"
-                                style="background-color: #C70039">
-                                Hapus
-                            </button> --}}
-
-                            <input type="submit" value="Publish" class="btn rounded-full font-bold text-white px-11 my-5"
+                            <input type="submit" value="Publish"
+                                class="btn rounded-full font-bold text-white px-11 my-5"
                                 style="background-color: #4AB6FF">
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -54,16 +52,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    {{-- <script>
-        selectImage.onchange = evt => {
-            preview = document.getElementById('preview');
-            preview.style.display = 'block';
-            const [file] = selectImage.files
-            if (file) {
-                preview.src = URL.createObjectURL(file)
-            }
-        }
-    </script> --}}
 
     <script>
         document.getElementById('selectImage').onchange = function(evt) {

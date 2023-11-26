@@ -15,9 +15,9 @@ class DashboardController extends Controller
      */
     public function __invoke(): View
     {
-        $title = 'Delete Data';
-        $text = 'Are you sure you want to delete';
-        confirmDelete($title, $text);
+        // $title = 'Delete Data';
+        // $text = 'Are you sure you want to delete';
+        // confirmDelete($title, $text);
 
 
         return view('dashboard', [

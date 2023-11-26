@@ -20,7 +20,7 @@ class TweetStoreController extends Controller
     {
         $request->validate([
             'image'     => 'nullable|file|mimes:jpeg,jpg,png,mp4,mp3,gif,svg',
-            'content'   => 'required|min:1'
+            'content'   => 'nullable|min:1'
         ]);
 
         $image = $request->file('image');
@@ -38,7 +38,7 @@ class TweetStoreController extends Controller
             'content' => request('content')
         ]);
 
-        toast('Tweet created successfully', 'success');
+        // toast('Tweet created successfully', 'success');
 
         return redirect("/");
     }

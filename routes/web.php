@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('profile/@{name}', [ProfileController::class, 'show'])->name('profile.show');
 
     Route::get('/create', TweetController::class)->name('create');
     Route::post('tweets', TweetStoreController::class)->name('tweets.store');

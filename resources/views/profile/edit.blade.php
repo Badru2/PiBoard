@@ -6,11 +6,14 @@
                 @method('PUT')
 
                 <x-input label="Username" name="name" :object="$user" />
+
                 <x-input label="Full Name" name="fullName" :object="$user" />
+
                 <x-input label="Biodata" name="bio" :object="$user" />
-                <div class="grid-cols-4">
-                    <label for="avatar" class="label col-span-1" style="color: white;">Avatar: </label>
-                    <input type="file" class="col-span-3" name="avatar">
+
+                <div class="">
+                    <label for="avatar" class="label " style="color: white;">Avatar: </label>
+                    <input type="file" class="col-span-3 file-input file-input-bordered w-full" name="avatar">
                 </div>
 
                 @if ($errors->has('avatar'))
@@ -19,7 +22,8 @@
                     </span>
                 @endif
 
-                <button type="submit" class="bg-cyan-600 py-2 px-5 rounded-sm font-bold text-white my-3">Submit</button>
+                <button type="submit"
+                    class="bg-cyan-600 py-2 px-5 rounded-sm font-bold text-white my-3">Submit</button>
             </form>
         </div>
     </div>

@@ -28,6 +28,19 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function show($name): View
+    {
+        $user = User::where('name', $name)->first();
+        if (!$user) abort(404);
+
+        $tweets = $user->tweets()->latest('id')->get();
+
+        return view('profile.profile', [
+            'user' => $user,
+            'tweets' => $tweets,
+        ]);
+    }
+
     public function edit(Request $request): View
     {
 
