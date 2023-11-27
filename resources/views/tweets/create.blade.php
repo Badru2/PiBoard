@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="py-8">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="card border-dark">
                 <div class="card-body bg-dark">
                     <h2 class="text-white text-xl">Post</h2>

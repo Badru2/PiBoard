@@ -105,7 +105,8 @@
                                                 </form>
                                             </li>
                                         @endcan
-                                        <li><a class="text-warning">Edit</a></li>
+                                        <li><a href="{{ route('tweets.edit', $tweet->id) }}"
+                                                class="text-warning">Edit</a></li>
                                     </ul>
                                 </div>
                             </div>

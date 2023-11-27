@@ -13,7 +13,7 @@
 
                 <div class="">
                     <label for="avatar" class="label " style="color: white;">Avatar: </label>
-                    <input type="file" class="col-span-3 file-input file-input-bordered w-full" name="avatar">
+                    <input type="file" class="col-span-3 custom-file-input" name="avatar">
                 </div>
 
                 @if ($errors->has('avatar'))
