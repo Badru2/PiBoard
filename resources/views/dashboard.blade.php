@@ -1,3 +1,6 @@
+@section('title')
+    Dashboard
+@endsection
 <x-app-layout>
     <div class="py-4">
         <div class="w-1/2 mx-auto sm:px-6 lg:px-8">

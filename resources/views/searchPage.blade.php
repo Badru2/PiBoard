@@ -1,3 +1,6 @@
+@section('title')
+    Search
+@endsection
 <x-app-layout>
     <div class="py-4">
         <div class="card w-1/2 grid grid-cols-5 mx-auto bg-dark my-3 mb-4">

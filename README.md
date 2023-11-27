@@ -37,3 +37,16 @@ npm run dev
 ```sh
 php artisan serve
 ```
+
+### Note
+Kalau gambar tidak muncul
+```sh
+rm public/storage
+php artisan storage:link
+```
+
+Jika yang diatas gagal
+```sh
+rm -rf public/storage
+php artisan storage:link
+```

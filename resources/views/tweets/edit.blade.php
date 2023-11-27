@@ -1,3 +1,6 @@
+@section('title')
+    Edit - {{ $tweet->content }}
+@endsection
 <x-app-layout>
     <div class="py-6">
         <div class="container max-w-3xl mx-auto sm:px-6 lg:px-8 bg-dark p-4 ">

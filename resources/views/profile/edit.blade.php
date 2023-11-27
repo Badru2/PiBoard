@@ -1,3 +1,6 @@
+@section('title')
+    Edit - {{ $user->name }}
+@endsection
 <x-app-layout>
     <div class="py-12">
         <div class="w-1/2 mx-auto sm:px-6 lg:px-8 space-y-6 py-3 bg-dark">

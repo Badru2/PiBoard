@@ -1,3 +1,6 @@
+@section('title')
+    Show - {{ $tweet->content }}
+@endsection
 <x-app-layout>
     <div class="py-4 w-1/2 mx-auto sm:px-6 lg:px-8">
         <div class="card w-1/2 grid grid-cols-5 mx-auto bg-dark my-3 mb-4">
@@ -25,7 +28,8 @@
                 <video src="{{ asset('/storage/posts/' . $tweet->image) }}" controls class="w-full"></video> --}}
                 @if (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp4' || pathinfo($tweet->image, PATHINFO_EXTENSION) == 'webm')
                     <!-- Jika itu video -->
-                    <video src="{{ asset('/storage/posts/' . $tweet->image) }}" controls class="w-4/5 mx-auto rounded"></video>
+                    <video src="{{ asset('/storage/posts/' . $tweet->image) }}" controls
+                        class="w-4/5 mx-auto rounded"></video>
                 @elseif (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp3' ||
                         pathinfo($tweet->image, PATHINFO_EXTENSION) == 'ogg' ||
                         pathinfo($tweet->image, PATHINFO_EXTENSION) == 'wav')
@@ -36,7 +40,8 @@
                     </audio>
                 @else
                     <!-- Jika itu gambar -->
-                    <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5" alt="">
+                    <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5"
+                        alt="">
                 @endif
 
             </div>
