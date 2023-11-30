@@ -14,7 +14,7 @@ class CommentController extends Controller
         $input = request()->except(['_token']);
         $input['user_id'] = auth()->user()->id;
 
-        Comment::create($input);
+        Comment::with('user')->create($input);
 
         return back();
     }

@@ -20,7 +20,7 @@ class ProfileController extends Controller
     public function index(Request $request): View
     {
         $user = $request->user();
-        $tweets = $user->tweets()->latest('id')->get();
+        $tweets = $user->tweets()->with('likes', 'comments', 'user')->latest('id')->get();
 
         return view('profile.profile', [
             'user' => $user,
@@ -30,10 +30,10 @@ class ProfileController extends Controller
 
     public function show($name): View
     {
-        $user = User::where('name', $name)->first();
+        $user = User::with('tweets')->where('name', $name)->first();
         if (!$user) abort(404);
 
-        $tweets = $user->tweets()->latest('id')->get();
+        $tweets = $user->tweets()->with('likes', 'comments', 'user')->latest('id')->get();
 
         return view('profile.profile', [
             'user' => $user,
@@ -99,5 +99,20 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function follow($following_id)
+    {
+        $user = Auth::user();
+
+        if ($user->following->contains($following_id)) {
+            $user->following()->detach($following_id);
+            $msg = ['status' => 'UNFOLLOW'];
+        } else {
+            $user->following()->attach($following_id);
+            $msg = ['status' => "FOLLOW"];
+        }
+
+        return response()->json($msg);
     }
 }

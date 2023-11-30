@@ -10,7 +10,7 @@ class LikeController extends Controller
 {
     public function toggle($id)
     {
-        $tweet = Tweet::findOrFail($id);
+        $tweet = Tweet::with('user')->findOrFail($id);
         $attr = ['user_id' => Auth::user()->id];
 
         if ($tweet->likes()->where($attr)->exists()) {

@@ -14,7 +14,6 @@ class Tweet extends Model
     use SoftDeletes, HasFactory;
 
     protected $dates = ['deleted_at'];
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

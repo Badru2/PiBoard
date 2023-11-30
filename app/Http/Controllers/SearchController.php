@@ -17,7 +17,7 @@ class SearchController extends Controller
     {
         $search = $request->get("search");
 
-        $searchTweet = Tweet::where('content', 'like', "%" . $search . "%")->orderBy('id', 'desc')->paginate();
+        $searchTweet = Tweet::with('user', 'likes', 'comments')->where('content', 'like', "%" . $search . "%")->orderBy('id', 'desc')->paginate();
         $searchUser = User::where('name', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate();
 
         return view('searchPage', ['tweets' => $searchTweet, 'users' => $searchUser], compact('search'));

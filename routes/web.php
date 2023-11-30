@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('profile/@{name}', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/follow/{user_id}', [ProfileController::class, 'follow'])->name('user.follow');
 
     Route::get('/create', TweetController::class)->name('create');
     Route::get('search', SearchController::class)->name('search');
