@@ -54,7 +54,7 @@
                                 @else
                                     <iconify-icon icon="material-symbols:favorite-outline"></iconify-icon>
                                 @endif
-                                {{-- {{ $tweet->likes->count() }} --}}
+                                {{ $tweet->likes->count() }}
                             </a>
 
                             {{-- Comment --}}
