@@ -68,7 +68,7 @@
                             @else
                                 <!-- gambar -->
                                 <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5"
-                                    alt="">
+                                    onclick="my_modal_{{ $tweet->id }}.showModal()" alt="">
                             @endif
                         </div>
 
@@ -83,7 +83,7 @@
                             </a>
 
                             {{-- Comment --}}
-                            <a href="{{ route('tweets.detail', $tweet->id) }}"
+                            <a onclick="comment_{{ $tweet->id }}.showModal()"
                                 class="m-2 text-xl text-white"><iconify-icon icon="bx:comment"></iconify-icon>
                                 {{ $tweet->comments->count() }}
                             </a>
@@ -100,6 +100,10 @@
                     </div>
                 </div>
             @endforeach
+
+            @include('components.image-modal')
+
+            @include('components.comment-modal')
         </div>
     </div>
 </x-app-layout>

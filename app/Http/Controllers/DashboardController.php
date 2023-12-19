@@ -16,11 +16,6 @@ class DashboardController extends Controller
      */
     public function __invoke(): View
     {
-        // $title = 'Delete Data';
-        // $text = 'Are you sure you want to delete';
-        // confirmDelete($title, $text);
-        // $user = User::class();
-
         return view('dashboard', [
             'tweets' => Tweet::with('user', 'likes', 'comments')->latest('id')->get(),
             'comments' => Comment::with('user')->latest('id')->get(),

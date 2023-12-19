@@ -10,7 +10,8 @@
                     <h1 class="text-3xl">Profile</h1>
                     @if (Auth::user()->id == $user->id)
                         <div class="dropdown dropdown-left right-4 top-4 absolute">
-                            <label tabindex="0" class="m-1 cursor-pointer"><iconify-icon icon="pepicons-pop:dots-y"></iconify-icon>
+                            <label tabindex="0" class="m-1 cursor-pointer"><iconify-icon
+                                    icon="pepicons-pop:dots-y"></iconify-icon>
                             </label>
                             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-black rounded-box w-40">
                                 <li>
@@ -36,7 +37,8 @@
                     <div class="container w-2/4">
                         <img class="w-52 h-52 object-cover rounded-full"
                             src="{{ $user->avatar ? asset('images/avatar/' . $user->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) }}"
-                            alt="{{ url('https://ui-avatars.com/api/?name=' . $user->name) }}">
+                            alt="{{ url('https://ui-avatars.com/api/?name=' . $user->name) }}"
+                            onclick="avatar_image.showModal()">
                     </div>
                     <div class="mt-3 container w-3/4">
                         <h1 class="font-bold text-3xl">{{ $user->name }}</h1>
@@ -74,8 +76,9 @@
                         <div class="text-center mt-2">
                             @if (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp4' || pathinfo($tweet->image, PATHINFO_EXTENSION) == 'webm')
                                 <!-- video -->
-                                <video id="myVideo" src="{{ asset('/storage/posts/' . $tweet->image) }}" disablepictureinpicture
-                                    controlslist="nodownload" controls class="w-4/5 mx-auto rounded"></video>
+                                <video id="myVideo" src="{{ asset('/storage/posts/' . $tweet->image) }}"
+                                    disablepictureinpicture controlslist="nodownload" controls
+                                    class="w-4/5 mx-auto rounded"></video>
                             @elseif (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp3' ||
                                     pathinfo($tweet->image, PATHINFO_EXTENSION) == 'ogg' ||
                                     pathinfo($tweet->image, PATHINFO_EXTENSION) == 'wav')
@@ -86,7 +89,8 @@
                                 </audio>
                             @else
                                 <!-- gambar -->
-                                <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5" alt="">
+                                <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5"
+                                    alt="" onclick="my_modal_{{ $tweet->id }}.showModal()">
                             @endif
                         </div>
 
@@ -96,21 +100,23 @@
                                 <div class="dropdown dropdown-left">
                                     <label tabindex="0" class="m-1 cursor-pointer text-xl"><iconify-icon
                                             icon="pepicons-pop:dots-y"></iconify-icon></label>
-                                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-black rounded-box w-24">
+                                    <ul tabindex="0"
+                                        class="dropdown-content z-[1] menu p-2 shadow bg-black rounded-box w-24">
                                         @can('delete', $tweet)
                                             <li>
                                                 <a href="{{ route('tweets.destroy', $tweet->id) }}"
                                                     onclick="event.preventDefault(); document.getElementById('delete-form').submit();"
                                                     class="text-danger" data-confirm-delete="true">Hapus</a>
 
-                                                <form id="delete-form" action="{{ route('tweets.destroy', $tweet->id) }}" method="post"
-                                                    style="display: none;">
+                                                <form id="delete-form" action="{{ route('tweets.destroy', $tweet->id) }}"
+                                                    method="post" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
                                             </li>
                                         @endcan
-                                        <li><a href="{{ route('tweets.edit', $tweet->id) }}" class="text-warning">Edit</a></li>
+                                        <li><a href="{{ route('tweets.edit', $tweet->id) }}"
+                                                class="text-warning">Edit</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -129,22 +135,38 @@
                             </a>
 
                             {{-- Comment --}}
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl text-white"><iconify-icon
-                                    icon="bx:comment"></iconify-icon>
+                            <a onclick="comment_{{ $tweet->id }}.showModal()"
+                                class="m-2 text-xl text-white"><iconify-icon icon="bx:comment"></iconify-icon>
                                 {{ $tweet->comments->count() }}
                             </a>
 
                             {{-- Share Inactive --}}
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl text-white"><iconify-icon
-                                    icon="ri:share-line"></iconify-icon></a>
+                            <a href="{{ route('tweets.detail', $tweet->id) }}"
+                                class="m-2 text-xl text-white"><iconify-icon icon="ri:share-line"></iconify-icon></a>
 
                             {{-- Favorite Inactive --}}
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl text-white"><iconify-icon
+                            <a href="{{ route('tweets.detail', $tweet->id) }}"
+                                class="m-2 text-xl text-white"><iconify-icon
                                     icon="material-symbols:bookmark-outline"></iconify-icon></a>
                         </div>
                     </div>
                 </div>
             @endforeach
+
+            @include('components.image-modal')
+
+            @include('components.comment-modal')
+
+            {{-- Avatar Image Modal --}}
+            <dialog id="avatar_image" class="modal">
+                <img class="w-80 h-80 object-cover"
+                    src="{{ $user->avatar ? asset('images/avatar/' . $user->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) }}"
+                    alt="{{ url('https://ui-avatars.com/api/?name=' . $user->name) }}">
+
+                <form method="dialog" class="modal-backdrop bg-transparent">
+                    <button>close</button>
+                </form>
+            </dialog>
         </div>
     </div>
 </x-app-layout>

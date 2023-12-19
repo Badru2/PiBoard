@@ -30,8 +30,9 @@
                         <div class="text-center">
                             @if (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp4' || pathinfo($tweet->image, PATHINFO_EXTENSION) == 'webm')
                                 <!-- video -->
-                                <video id="myVideo" src="{{ asset('/storage/posts/' . $tweet->image) }}" disablepictureinpicture
-                                    controlslist="nodownload" controls class="w-4/5 mx-auto rounded"></video>
+                                <video id="myVideo" src="{{ asset('/storage/posts/' . $tweet->image) }}"
+                                    disablepictureinpicture controlslist="nodownload" controls
+                                    class="w-4/5 mx-auto rounded"></video>
                             @elseif (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp3' ||
                                     pathinfo($tweet->image, PATHINFO_EXTENSION) == 'ogg' ||
                                     pathinfo($tweet->image, PATHINFO_EXTENSION) == 'wav')
@@ -42,13 +43,15 @@
                                 </audio>
                             @else
                                 <!-- gambar -->
-                                <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5" alt="">
+                                <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5"
+                                    onclick="my_modal_{{ $tweet->id }}.showModal()" alt="">
                             @endif
                         </div>
 
                         <div class="border-black border-t-2 border-b-2 mt-2 flex justify-evenly">
                             {{-- Like --}}
-                            <a class="m-2 text-xl cursor-pointer text-danger" onclick="like({{ $tweet->id }}, this)">
+                            <a class="m-2 text-xl cursor-pointer text-danger"
+                                onclick="like({{ $tweet->id }}, this)">
                                 @if ($tweet->is_liked())
                                     <iconify-icon icon="material-symbols-light:favorite"></iconify-icon>
                                 @else
@@ -58,22 +61,29 @@
                             </a>
 
                             {{-- Comment --}}
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl text-white"><iconify-icon
-                                    icon="bx:comment"></iconify-icon>
+                            <a onclick="comment_{{ $tweet->id }}.showModal()"
+                                class="m-2 text-xl text-white"><iconify-icon icon="bx:comment"></iconify-icon>
                                 {{ $tweet->comments->count() }}
                             </a>
 
                             {{-- Share inactive --}}
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl text-white"><iconify-icon
-                                    icon="ri:share-line"></iconify-icon></a>
+                            <a href="{{ route('tweets.detail', $tweet->id) }}"
+                                class="m-2 text-xl text-white"><iconify-icon icon="ri:share-line"></iconify-icon></a>
 
                             {{-- Favorite inactive --}}
-                            <a href="{{ route('tweets.detail', $tweet->id) }}" class="m-2 text-xl text-white"><iconify-icon
+                            <a href="{{ route('tweets.detail', $tweet->id) }}"
+                                class="m-2 text-xl text-white"><iconify-icon
                                     icon="material-symbols:bookmark-outline"></iconify-icon></a>
                         </div>
                     </div>
                 </div>
             @endforeach
+
+            @include('components.image-modal')
+
+            @include('components.comment-modal')
         </div>
     </div>
+
+
 </x-app-layout>
