@@ -14,13 +14,17 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="{{ asset('images/asset/logo.png') }}" rel='shortcut icon'>
 
+    {{-- AlpineJS --}}
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    {{-- <style>
+    {{-- <style>j
         img {
             pointer-events: none;
             user-select: none;
@@ -63,6 +67,12 @@
         document.querySelectorAll(".captions").forEach(function(el) {
             let renderedText = el.innerHTML.replace(/#(\w+)/g,
                 "<a href='search?search=%23$1' style='color: #00A9FF; text-decoration: underline'>#$1</a>");
+            el.innerHTML = renderedText;
+        });
+
+        document.querySelectorAll(".att").forEach(function(el) {
+            let renderedText = el.innerHTML.replace(/@(\w+)/g,
+                "<a href='profile/%40$1' style='color: #00A9FF; text-decoration: underline'>@$1</a>");
             el.innerHTML = renderedText;
         });
 

@@ -1,7 +1,7 @@
 @foreach ($tweets as $tweet)
     <dialog id="comment_{{ $tweet->id }}" class="modal text-white">
         <div class="modal-box w-6/12 max-w-5xl h-screen">
-            <p class="text-white captions">{{ $tweet->content }}</p>
+            <p class="text-white captions att">{{ $tweet->content }}</p>
             <div class="text-center">
                 @if (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp4' || pathinfo($tweet->image, PATHINFO_EXTENSION) == 'webm')
                     <!-- video -->

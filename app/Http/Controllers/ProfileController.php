@@ -19,12 +19,16 @@ class ProfileController extends Controller
 
     public function index(Request $request): View
     {
+        $accept = $request->user();
+        $accept = $request->user()->email == "admin@gmail.com";
+
         $user = $request->user();
         $tweets = $user->tweets()->with('likes', 'comments', 'user')->latest('id')->get();
 
         return view('profile.profile', [
             'user' => $user,
             'tweets' => $tweets,
+            'accept' => $accept,
         ]);
     }
 

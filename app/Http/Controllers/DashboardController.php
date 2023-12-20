@@ -19,6 +19,7 @@ class DashboardController extends Controller
         return view('dashboard', [
             'tweets' => Tweet::with('user', 'likes', 'comments')->latest('id')->get(),
             'comments' => Comment::with('user')->latest('id')->get(),
+            'users' => User::with('user'),
         ]);
     }
 }

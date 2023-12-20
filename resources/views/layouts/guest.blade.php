@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>PIBOARD</title>
+    <title>PiBoard</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="{{asset('images/asset/logo.png')}}" rel='shortcut icon'>
+    <link href="{{ asset('images/asset/logo.png') }}" rel='shortcut icon'>
 
     {{-- Styles --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,12 +22,15 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-centerpt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900" style="background-color: #021F35">
+    <div class="min-h-screen flex flex-col sm:justify-centerpt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900"
+        style="background-color: #021F35">
         <div class="w-2/5 grid min-h-screen content-center">
             <div class="container ms-4">
                 <img style="color: " src="{{ asset('icon_white.svg') }}" alt="" srcset="">
-                <div class="my-3" style="width: 200px; height: 10px; background-color: #C70039; border-radius: 10px"></div>
-                <h2 class="text-white text-3xl font-bold">Selamat Datang Di <h2 class="text-white text-3xl font-bold">PI Board</h2>
+                <div class="my-3" style="width: 200px; height: 10px; background-color: #C70039; border-radius: 10px">
+                </div>
+                <h2 class="text-white text-3xl font-bold">Selamat Datang Di <h2 class="text-white text-3xl font-bold">PI
+                        Board</h2>
                 </h2>
             </div>
         </div>
@@ -41,7 +44,9 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

@@ -49,7 +49,7 @@
                         </div>
 
                         {{-- Tweet Content --}}
-                        <p class="captions">{{ $tweet->content }}</p>
+                        <p class="captions att">{{ $tweet->content }}</p>
 
                         <div class="text-center">
                             @if (pathinfo($tweet->image, PATHINFO_EXTENSION) == 'mp4' || pathinfo($tweet->image, PATHINFO_EXTENSION) == 'webm')

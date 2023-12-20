@@ -21,7 +21,8 @@ class TweetPolicy
      */
     public function view(User $user, Tweet $tweet): bool
     {
-        return $user->id == $tweet->user_id;
+        $accept = $user->email == 'admin@gmail.com' || $user->id == $tweet->user_id;
+        return $accept;
     }
 
     /**
@@ -37,7 +38,7 @@ class TweetPolicy
      */
     public function update(User $user, Tweet $tweet): bool
     {
-        //
+        return $user->id == $tweet->user_id;
     }
 
     /**
@@ -45,7 +46,8 @@ class TweetPolicy
      */
     public function delete(User $user, Tweet $tweet): bool
     {
-        return $user->id == $tweet->user_id;
+        $accept = $user->email == 'admin@gmail.com' || $user->id == $tweet->user_id;
+        return $accept;
     }
 
     /**
