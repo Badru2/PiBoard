@@ -1,5 +1,5 @@
 @foreach ($tweets as $tweet)
-    <div class="card mb-5 border-dark">
+    <div class="card mb-5 border-dark tweet-mobile">
         <div class="card-body bg-dark text-light">
             {{-- Content Tweet Start --}}
             <div class="flex flex-row">

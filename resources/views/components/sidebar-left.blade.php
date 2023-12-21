@@ -1,4 +1,5 @@
-<aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+<aside id="default-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 mobile"
     aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-5" style="background-color: #021F35">
         <ul class="space-y-2 font-medium">
@@ -36,7 +37,7 @@
                     <span class="ms-3">Create</span>
                 </a>
             </li>
-            
+
         </ul>
     </div>
 </aside>

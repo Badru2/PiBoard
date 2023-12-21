@@ -7,6 +7,65 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
+    <style>
+        /* img {
+            pointer-events: none;
+            user-select: none;
+        } */
+
+        .mobile-nav {
+            visibility: hidden;
+            z-index: -999;
+            position: absolute;
+        }
+
+        /* in development (Responsive to mobile and tablet) */
+        @media only screen and (max-width: 600px) {
+            html body .min-h-screen .mobile {
+                display: none;
+            }
+
+            html body .mx-auto .tweet-mobile {
+                margin: 0;
+                padding: 0;
+            }
+
+            html body .mx-auto .py-4 .mobile-container {
+                width: 90vw;
+            }
+
+            html body .mx-auto .tweet-mobile .card-body {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .min-h-screen .mobile {
+                display: none;
+            }
+
+            .mx-auto .tweet-mobile {
+                margin: 0;
+                padding: 0;
+            }
+
+            .mx-auto .py-4 .mobile-container {
+                width: 90vw;
+            }
+
+            .mx-auto .tweet-mobile .card-body {
+                width: 100%;
+            }
+
+            .mobile-nav {
+                visibility: visible;
+                z-index: 99;
+                position: sticky;
+                top: 0;
+            }
+        }
+    </style>
+
     {{-- Styles --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -24,17 +83,13 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    {{-- <style>j
-        img {
-            pointer-events: none;
-            user-select: none;
-        }
-    </style> --}}
+
 </head>
 
 <body class="font-sans antialiased dark:bg-gray-900">
     <div class="min-h-screen dark:bg-gray-900 ">
         {{-- @include('layouts.navigation') --}}
+        @include('components.top-nav')
 
         @include('components.sidebar-left')
 

@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/create', TweetController::class)->name('create');
     Route::get('search', SearchController::class)->name('search');
-
+    
     Route::post('tweets', TweetStoreController::class)->name('tweets.store');
     Route::delete('tweets/{id}', TweetDeleteController::class)->name('tweets.destroy');
     Route::get('tweets/{id}/edit', TweetEditController::class)->name('tweets.edit');

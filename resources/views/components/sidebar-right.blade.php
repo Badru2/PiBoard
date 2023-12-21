@@ -1,5 +1,5 @@
 <aside id="right-sidebar"
-    class="fixed top-0 right-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    class="fixed top-0 right-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 mobile"
     aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-5" style="background-color: #021F35">
         <ul class="space-y-2 font-medium">
