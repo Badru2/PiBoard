@@ -37,8 +37,8 @@
 
                 <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="my-3 flex flex-row">
-                    <div class="container w-2/4">
-                        <img class="w-52 h-52 object-cover rounded-full"
+                    <div class="container w-2/4 avatar-container">
+                        <img class="w-52 h-52 object-cover rounded-full avatar-mobile"
                             src="{{ $user->avatar ? asset('images/avatar/' . $user->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) }}"
                             alt="{{ url('https://ui-avatars.com/api/?name=' . $user->name) }}"
                             onclick="avatar_image.showModal()">

@@ -10,7 +10,7 @@
     </a>
 
     {{-- Comment --}}
-    <a onclick="comment_{{ $tweet->id }}.showModal()" class="m-2 text-xl text-white"><iconify-icon
+    <a onclick="comment_{{ $tweet->id }}.showModal()" class="m-2 text-xl text-white cursor-pointer"><iconify-icon
             icon="bx:comment"></iconify-icon>
         {{ $tweet->comments->count() }}
     </a>

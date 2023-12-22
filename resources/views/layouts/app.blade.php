@@ -8,6 +8,10 @@
     <title>@yield('title')</title>
 
     <style>
+        html {
+            color: white;
+        }
+
         /* img {
             pointer-events: none;
             user-select: none;
@@ -20,24 +24,6 @@
         }
 
         /* in development (Responsive to mobile and tablet) */
-        @media only screen and (max-width: 600px) {
-            html body .min-h-screen .mobile {
-                display: none;
-            }
-
-            html body .mx-auto .tweet-mobile {
-                margin: 0;
-                padding: 0;
-            }
-
-            html body .mx-auto .py-4 .mobile-container {
-                width: 90vw;
-            }
-
-            html body .mx-auto .tweet-mobile .card-body {
-                width: 100%;
-            }
-        }
 
         @media only screen and (max-width: 768px) {
             .min-h-screen .mobile {
@@ -60,8 +46,17 @@
             .mobile-nav {
                 visibility: visible;
                 z-index: 99;
-                position: sticky;
-                top: 0;
+                position: fixed;
+                bottom: 0;
+            }
+
+            .my-3 .container .avatar-mobile {
+                width: 15vw;
+                height: 15vw;
+            }
+
+            .my-3 .avatar-container {
+                width: 30%;
             }
         }
     </style>

@@ -36,7 +36,8 @@
                     </audio>
                 @else
                     <!-- gambar -->
-                    <img src="{{ asset('/storage/posts/' . $tweet->image) }}" class="rounded mx-auto w-4/5"
+                    <img src="{{ asset('/storage/posts/' . $tweet->image) }}"
+                        class="rounded mx-auto w-4/5 max-h-96 object-cover"
                         onclick="my_modal_{{ $tweet->id }}.showModal()" alt="">
                 @endif
             </div>
